@@ -13,11 +13,18 @@ const server = http.createServer((req, res) => {
     channel: "Brainstorm Codings",
   };
 
+  console.log(http.METHODS);
+  console.log(http.STATUS_CODES);
+  console.log(req.url);
+  console.log(req.headers);
+  console.log(req.method);
+  res.writeHead(200, "ok", { "content-type": "text/html" });
+  res.write("<p>Hello</p>");
   //   Convert JavaScript Object into String
   const data = JSON.stringify(dataObj);
 
   //   Send JSON as response
-  res.end(data);
+  res.end("<h1>Hello</h1>");
 });
 
 // Server listening on port localhost:3000
