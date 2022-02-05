@@ -3,28 +3,54 @@ const http = require("http");
 
 // Function to create the server
 const server = http.createServer((req, res) => {
-  // Set the "Content-type" header
-  res.setHeader("Content-type", "application/json");
+  // METHODS
+  // console.log(http.METHODS);
 
-  // JavaScript Object
-  const dataObj = {
-    name: "Aditya",
-    age: 21,
-    channel: "Brainstorm Codings",
-  };
+  // http://localhost:3000/home
+  // pathanme is /home
 
-  console.log(http.METHODS);
-  console.log(http.STATUS_CODES);
-  console.log(req.url);
-  console.log(req.headers);
-  console.log(req.method);
-  res.writeHead(200, "ok", { "content-type": "text/html" });
-  res.write("<p>Hello</p>");
-  //   Convert JavaScript Object into String
-  const data = JSON.stringify(dataObj);
+  // Store the PATH in a variable using "url" property
+  const pathname = req.url;
 
-  //   Send JSON as response
-  res.end("<h1>Hello</h1>");
+  // Create "/" and "/home" routes
+  if (pathname == "/" || pathname == "/home") {
+    // Set a header "content-type" to "text/html"
+    res.writeHead(200, "ok", {
+      "content-type": "text/html",
+    });
+
+    // Send a response
+    res.write("<h1>Welcome to the home page</h1>");
+  } else if (pathname == "/cars") {
+    // Set a header "content-type" to "text/html"
+    res.writeHead(200, "ok", {
+      "content-type": "text/html",
+    });
+
+    // Send a response
+    res.write("<h1>Welcome to the world of cars</h1>");
+  } else if (pathname == "/car") {
+    // Set a header "content-type" to "text/html"
+    res.writeHead(200, "ok", {
+      "content-type": "text/html",
+    });
+
+    // Send a response
+    res.write("Welcome to the particular car");
+
+    // IF user requests none of the above routes
+  } else {
+    // Set a header "content-type" to "text/html"
+    res.writeHead(200, "ok", {
+      "content-type": "text/html",
+    });
+
+    // Send a response
+    res.write("<h1>Page not found!</h1>");
+  }
+
+  // STATUS_CODES
+  // console.log(http.STATUS_CODES);
 });
 
 // Server listening on port localhost:3000
